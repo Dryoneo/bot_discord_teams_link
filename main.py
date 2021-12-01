@@ -1,8 +1,4 @@
-### Script Python afin d'envoyer le lien du cours V1.1 ###
-
-### Améliorations possibles : ###
-### Au lieu de chercher le lien se trouvant à la position X et Y selon le jour/heure ###
-### prendre le dernier lien teams du code source ###
+### Script Python afin d'envoyer le lien du cours V2.0 ###
 
 ### Parametres : ###
 ### sys.argv[1] : prenom d'un eleve de la classe ###
@@ -22,83 +18,141 @@ import datetime
 import discord
 import sys
 import os
+import re
+import csv
 
-### Dirige le navigateur vers le planning de la classe ###
-### Param browser : Le navigateur headless ###  
-def go_to_planning(browser):
-    browser.get('https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=' + sys.argv[1] + '.' + sys.argv[2] + 'date=' + strftime("%m-%d-%Y"))
+### Go to class's planning ###
+def GoToPlanning(browser):
+    url = 'https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=' + sys.argv[1] + '.' + sys.argv[2] + '&date=' + datetime.datetime.now().strftime("%m-%d-%Y")
+    browser.get(url)
     while True:
         try:
             WebDriverWait(browser,10).until(EC.presence_of_element_located((By.ID, "DivBody")))
             break
         except:
+            print("Waiting for loading page, method : go_to_planning()\n")
             sleep(3)
             
-### Récupération du lien du cours ###
-### Param browser : Le navigateur headless ###  
-### Avant tout on récupère le cours actuel à l'aide de sa position dans la page ###
-### -> Chaque heure/jour possede une position spécifique sur beecome.io ###
-def get_link_teams(browser):
-    css_top_heure = {8 : "115.15%",
-                 9 : "125.15%",
-                 10 : "135.15%",
-                 11 : "145.15%",
-                 13 : "165.15%",
-                 14 : "175.15%",
-                 15 : "185.15%",
-                 16 : "195.15%",
-                 17 : "205.15%"}
-    css_left_jour = {1 : "103.12%",
-                     2 : "122.52%",
-                     3 : "141.92%",
-                     4 : "161.32%",
-                     5 : "180.72%",}
-    heure = datetime.datetime.today().hour
-    jour = datetime.datetime.today().isoweekday()
-    top_heure = css_top_heure.get(heure)
-    left_jour = css_left_jour.get(jour)
+### Get course link ###
+def GetLastLinkTeams(browser):
     try:
-        div = browser.find_element_by_css_selector("div[class='Case'][style*='top: " + top_heure + "; left: "  + left_jour + ";']")
-        take_screenshot(browser)
-        link = div.find_element(By.CSS_SELECTOR, "a[href^='https://edtmobiliteng.wigorservices.net']")  
-        browser.get(link.get_attribute('href'))
-        sleep(2)
-        return browser.current_url
-    except:
-        print("Aucun cours pour la classe : " + sys.argv[4] + " à la date : " + datetime.datetime.today())
-        return
-    
-### Prends un screenshot du planning ###
-def take_screenshot(browser):
-    global name_screenshot
-    name_screenshot = sys.argv[4] + "/edt_" + datetime.datetime.today().strftime("%m-%d-%Y") + ".png"
-    browser.save_screenshot(name_screenshot)
-    
+        TakeScreenshot(browser)
+        links = browser.find_elements(By.CSS_SELECTOR, "a[href^='https://edtmobiliteng.wigorservices.net']")
+        if(len(links)>0):
+            last_link = links[len(links) - 8]
+            print(last_link.find_element(By.XPATH, "./../..").get_attribute("innerHTML"))
 
-### Partie 1 : Navigation vers le cours actuel afin de prendre l'URL ###    
+            # Get parent element to retrieve course name, if is not distancing we dont return anything
+            parent_element = last_link.find_element(By.XPATH, "./../..")
+            course_name_element = GetCourseName(parent_element.get_attribute("innerHTML"))
+            global course_name
+            course_name = course_name_element.replace("DISTANCIEL", "").replace("&amp;", "&")
+           
+            if isDistancingCourse(course_name_element) is False: return None
+            
+            browser.get(last_link.get_attribute('href'))
+            sleep(2)
+            url_teams = browser.current_url
+            if(not isAlreadySent(url_teams)):
+                # Display the alert box to open Teams directly
+                url_teams = url_teams.replace('&suppressPrompt=true', '&suppressPrompt=false')
+                SaveLink(url_teams)
+                print("We got a new link : " + url_teams + "\n")
+                print("Course : " + course_name + "\n")
+                return url_teams
+            else:
+                print("We already have this link : " + url_teams + "\n")
+    except Exception as e:
+        print("An error occured, method : get_last_link_teams() -> ", e)
+        return
+    return
+
+### Check if teams link has been already sent ###
+def isAlreadySent(url_teams):
+    try:
+        file = open(sys.argv[4] + "/url_teams.txt", "r")
+        for url in file:
+            if(url[0:333] == url_teams[0:333]):
+                return True
+    except:
+        print("The file doesnt exist")
+    return False
+    
+### Save the new teams link in the file ###
+def SaveLink(url_teams):
+    file = open(sys.argv[4] + "/url_teams.txt", 'a+')
+    file.write(url_teams + "\n")
+    
+### Take a screenshot of the planning ###
+def TakeScreenshot(browser):
+    global name_screenshot
+    name_screenshot = "/home/ubuntu/bot_discord/" + sys.argv[4] + "/edt_" + datetime.datetime.today().strftime("%m-%d-%Y") + ".png"
+    browser.save_screenshot(name_screenshot)
+    print("Screenshot " + name_screenshot + " sauvegardé.\n")
+    
+### Get the course name ###
+def GetCourseName(string_element):
+    return string_element.split('<div class="Presence">')[0] + string_element.split('</div>')[-1]
+    
+### Get the course name ###
+def isDistancingCourse(course_name):
+    return True if "DISTANCIEL" in course_name else False
+    
+### Get link of ressources MyLearningBox with the course name ###
+def GetLinkMLB(course_name):
+    try:
+        file = open("./dict_courses.csv")
+        reader = csv.reader(file, delimiter = ';')
+        for course in reader:
+            if(course_name[0:10] in course[0]):
+                course_name = course[0]
+                print("The MLB link : " + course[1])
+                return course[1]
+    except:
+        print("The file doesnt exist")
+    return None
+
+    
+### Part 0 : Check passed args
+if(len(sys.argv) != 6):
+    print("Please use this program with these 5 necessary arguments :")
+    print("python3 main.py firstname lastname id_discord_chanel class_number token_discord_bot\n")
+    exit()
+
+### Part 1 : Go to planning to get the last new teams link ###  
+print("Initialisation du navigateur.\n")  
 options = Options()
 options.headless = True
+print("Demarrage du navigateur firefox.\n")
 browser = webdriver.Firefox(options=options)
-go_to_planning(browser)
-link_teams = get_link_teams(browser)
-# Affiche l'alert box pour ouvrir Teams directement
-link_teams.replace('&suppressPrompt=true', '&suppressPrompt=false')
+GoToPlanning(browser)
+link_teams = GetLastLinkTeams(browser)
+link_mlb = GetLinkMLB(course_name)
 
-### Nettoyage ###
+### Cleanup ###
 browser.close()
 os.system('pkill firefox')
+print("Cleanup done.\n")
 
 if(link_teams != None):
-    ### Partie 2 : Bot Discord qui va envoye l'URL dans le salon de la classe ###    
+    ### Part 2 : Discord bot will send the teams link in the channel room ###  
+    print("Bot discord init.")  
     client = discord.Client()
     @client.event
     async def on_ready():
+        print("Bot start..\n")
         channel = client.get_channel(int(sys.argv[3]))
-        print("Le bot discord est prêt\n")
-        print("Envoi du planning : " + name_screenshot + " dans le channel de la classe " + sys.argv[4] + "\n")
-        print("Envoi du lien du cours : " + link_teams + " dans le channel de la classe " + sys.argv[4] + "\n")
+        print("Bot ready.\n")
+        """
+        print("Send the planning : " + name_screenshot + " in the class room channel " + sys.argv[4] + "\n")
         await channel.send(file=discord.File(name_screenshot))
-        await channel.send("Le lien du cours : " + link_teams)
+        print("Ok.")
+        """
+        print("Send the teams link : " + link_teams + " in the class room channel " + sys.argv[4] + "\n")
+        await channel.send("Le lien du cours " + course_name + ": " + link_teams)
+        await channel.send("Le lien MLB : " + link_mlb)
+        print("Ok.")
         await client.logout()
+        print("Bot disconnected.\n")
         exit()
     client.run(sys.argv[5])
