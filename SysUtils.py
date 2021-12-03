@@ -25,13 +25,13 @@ class SysUtils:
             file = open("/home/ubuntu/bot_discord/dict_courses.csv")
             reader = csv.reader(file, delimiter = ';')
             for course in reader:
-                if(courseNameElement[0:10].lower() in course[0].lower()):
+                if(courseNameElement[0:20].lower().lstrip() in course[0].lower()):
                     courseName = course[0]
                     print("The MLB link : " + course[1] + "\n")
                     return course[1], courseName
         except Exception as e:
             print("An error occured : ", e)
-        return None
+        return None, None
         
     ### Cleanup server ###
     def cleanUp(self, browser):

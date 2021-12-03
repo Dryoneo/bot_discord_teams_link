@@ -1,4 +1,4 @@
-### Script Python afin d'envoyer le lien du cours V3.0 ###
+### Script Python afin d'envoyer le lien du cours V3.0.1 ###
 
 ### EVOLUTIONS ###
 ### 30min avant : donner la salle & bat + lien MLB ###
@@ -103,16 +103,16 @@ while (urlTeams == None) and (urlMLB == None):
 if(urlTeams != None) or ((courseName != None) and (alreadyGetted != True)):
     ### Part 2 : Discord bot will send datas in the channel room ### 
 
-    message = "@everyone Cours : " + courseName + "\n"
-
-    # If we get an url teams (then we are in distancing)
-    if(urlTeams != None):
-        print("Sending the teams link : " + urlTeams + " in the class room channel " + sys.argv[4] + "...")
-        message = "\n".join({message, "Le lien Teams : " + urlTeams})
+    message = "@everyone Cours : " + courseName
     
     # If we have a new cours at this hours
     if(courseName != None) and (alreadyGetted != True):
         print("Sending the MLB link : " + urlMLB + " in the class room channel " + sys.argv[4] + "...")
-        message = "\n".join({message, "Le lien MLB : " + urlMLB})
+        message = message + "\nLe lien MLB : " + urlMLB
+
+    # If we get an url teams (then we are in distancing)
+    if(urlTeams != None):
+        print("Sending the teams link : " + urlTeams + " in the class room channel " + sys.argv[4] + "...")
+        message = message + "\nLe lien Teams : " + urlTeams
 
     sendMessage(message)
