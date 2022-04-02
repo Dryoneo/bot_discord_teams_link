@@ -1,11 +1,3 @@
-### Script Python afin d'envoyer le lien du cours V3.0.1 ###
-
-### EVOLUTIONS ###
-### 30min avant : donner la salle & bat + lien MLB ###
-### 15min avant : donner le lien teams ###
-### Dimanche soir vers 18h : donner planning de la semaine + jours en distanciel ###
-### Vendredi soir vers 20h : dire si semaine pro entreprise ou ecole ###
-
 ### Parametres : ###
 ### sys.argv[1] : prenom d'un eleve de la classe ###
 ### sys.argv[2] : nom d'un eleve de la classe ###
@@ -17,44 +9,33 @@
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from time import sleep
-import discord
-import datetime
+from datetime import datetime
 import sys
 from Scrapper import Scrapper
 from SysUtils import SysUtils
+import requests as rq
+import json
     
+def sendMessage(courseName, message, screenshotNextWeekPath=None):
+    data = {
+        "embeds": [{
+            "title": courseName,
+            'thumbnail': {'url': 'attachment://' + screenshotNextWeekPath},
+            "description": message,
+            "color": int(1127128),
+            "footer": {'text': 'Made by Lucas'},
+            "timestamp": str(datetime.utcnow())
+        }]
+    }
 
-def sendMessage(message):
-    print("Bot discord init.")  
-    client = discord.Client()
-    @client.event
-    async def on_ready():
-        print("Bot discord starting..")
-        channel = client.get_channel(int(sys.argv[3]))
-        print("Bot discord is ready.\n")
-            
-        await channel.send(message)
-        
-        print("Ok.")
-        await client.close()
-        print("Bot disconnected.\n")
-    client.run(sys.argv[5])  
+    result = rq.post('https://discord.com/api/webhooks/959745986815754280/IEf_713VEibpDtCSCDOpMdjAsMp4mz3EXh9dbTYHSjTYk9l_4VVMeVnshk3oQz9cFz8B', data=json.dumps(data), headers={"Content-Type": "application/json"})
 
-def sendPlanning(screenshotNextWeekPath):
-    print("Bot discord init.")  
-    client = discord.Client()
-    @client.event
-    async def on_ready():
-        print("Bot discord starting..")
-        channel = client.get_channel(int(sys.argv[3]))
-        print("Bot discord is ready.\n")
-            
-        await channel.send(file=discord.File(screenshotNextWeekPath))
-        
-        print("Ok.")
-        await client.close()
-        print("Bot disconnected.\n")
-    client.run(sys.argv[5])  
+    try:
+        result.raise_for_status()
+    except rq.exceptions.HTTPError as err:
+        print(err)
+    else:
+        print("Payload delivered successfully, code {}.".format(result.status_code))
 
 ### Part 0 : Check passed args
 if(len(sys.argv) != 6):
@@ -79,40 +60,39 @@ while (urlTeams == None) and (urlMLB == None):
     browser = webdriver.Firefox(options=options)
     print("Browser is started.\n")
 
-    date_now = datetime.datetime.now()
+    date_now = datetime.now()
     if(date_now.isoweekday() == 5 and date_now.hour == 18):
         isSchool, screenshotNextWeekPath = iAmTheScrapper.isSchoolPeriodNextWeek(browser)
         if(isSchool):
-            sendMessage("@everyone\nSemaine prochaine : **Ecole**")
-            sendPlanning(screenshotNextWeekPath)
+            sendMessage("@everyone\nSemaine prochaine : **Ecole**", screenshotNextWeekPath)
         else:
             sendMessage("@everyone\nSemaine prochaine : **Entreprise**")  
+        sys.exit()
 
 
     iAmTheScrapper.goToPlanning(browser, date_now.strftime("%m-%d-%Y") )
-    iAmTheScrapper.takeScreenshot(browser, date_now.strftime("%m-%d-%Y"))
+    nameScreenshot = iAmTheScrapper.takeScreenshot(browser, date_now.strftime("%m-%d-%Y"))
     urlTeams, urlMLB, courseName, alreadyGetted = iAmTheScrapper.getLastLinkTeams(browser)
     ### Cleanup ###
     iAmUrWaiter.cleanUp(browser)
     count = count + 1
     if count == 5:
         print("Can't get new link, abort.\n")
+        browser.close();
         sys.exit()
     sleep(5)
 
-if(urlTeams != None) or ((courseName != None) and (alreadyGetted != True)):
-    ### Part 2 : Discord bot will send datas in the channel room ### 
 
-    message = "@everyone Cours : " + courseName
+if(urlTeams != None) or ((courseName != None) and (alreadyGetted != True)):
     
     # If we have a new cours at this hours
     if(courseName != None) and (alreadyGetted != True):
         print("Sending the MLB link : " + urlMLB + " in the class room channel " + sys.argv[4] + "...")
-        message = message + "\nLe lien MLB : " + urlMLB
+        message = "Le lien MLB : " + urlMLB
 
     # If we get an url teams (then we are in distancing)
     if(urlTeams != None):
         print("Sending the teams link : " + urlTeams + " in the class room channel " + sys.argv[4] + "...")
-        message = message + "\nLe lien Teams : " + urlTeams
+        message = "Le lien Teams : " + urlTeams
 
-    sendMessage(message)
+    sendMessage(courseName, message, nameScreenshot)

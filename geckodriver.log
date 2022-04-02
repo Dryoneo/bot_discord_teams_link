@@ -1,0 +1,192 @@
+1648890360034	geckodriver	INFO	Listening on 127.0.0.1:58688
+1648890363077	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilewOFPbs"
+*** You are running in headless mode.
+1648890363680	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilewOFPbs\\search.json.mozlz4", (void 0)))
+1648890364632	Marionette	INFO	Listening on port 58703
+1648890364759	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1648890374680	geckodriver	INFO	Listening on 127.0.0.1:58754
+1648890377761	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilew9FOCl"
+*** You are running in headless mode.
+1648890378015	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilew9FOCl\\search.json.mozlz4", (void 0)))
+1648890378915	Marionette	INFO	Listening on port 58763
+1648890379338	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=lucas.leroux&date=03-18-2022, line 564: unreachable code after return statement
+1648890385527	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1648890385565	Marionette	INFO	Stopped listening on port 58763
+1648890415166	geckodriver	INFO	Listening on 127.0.0.1:58864
+1648890418261	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilebPTjCi"
+*** You are running in headless mode.
+1648890418499	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilebPTjCi\\search.json.mozlz4", (void 0)))
+1648890419373	Marionette	INFO	Listening on port 58878
+1648890419807	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=lucas.leroux&date=03-18-2022, line 564: unreachable code after return statement
+1648890424793	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1648890425251	Marionette	INFO	Stopped listening on port 58878
+1648890432826	geckodriver	INFO	Listening on 127.0.0.1:58952
+1648890435984	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilewQ6H0H"
+*** You are running in headless mode.
+1648890436226	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilewQ6H0H\\search.json.mozlz4", (void 0)))
+1648890437059	Marionette	INFO	Listening on port 58966
+1648890437542	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=lucas.leroux&date=03-18-2022, line 564: unreachable code after return statement
+1648890442465	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1648890442927	Marionette	INFO	Stopped listening on port 58966
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1648890452217	geckodriver	INFO	Listening on 127.0.0.1:59037
+1648890455343	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilexihrX7"
+*** You are running in headless mode.
+1648890455593	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilexihrX7\\search.json.mozlz4", (void 0)))
+1648890456468	Marionette	INFO	Listening on port 59049
+1648890456912	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=lucas.leroux&date=03-18-2022, line 564: unreachable code after return statement
+1648890464577	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1648890464633	Marionette	INFO	Stopped listening on port 59049
+1648890470255	geckodriver	INFO	Listening on 127.0.0.1:59121
+1648890539651	geckodriver	INFO	Listening on 127.0.0.1:59194
+1648890542793	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilefWiRil"
+*** You are running in headless mode.
+1648890543033	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilefWiRil\\search.json.mozlz4", (void 0)))
+1648890543888	Marionette	INFO	Listening on port 59206
+1648890544365	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=lucas.leroux&date=03-18-2022, line 564: unreachable code after return statement
+1648890550729	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1648890551213	Marionette	INFO	Stopped listening on port 59206
+1648890556840	geckodriver	INFO	Listening on 127.0.0.1:59277
+1648890559984	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofile4CKTbu"
+*** You are running in headless mode.
+1648890560225	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofile4CKTbu\\search.json.mozlz4", (void 0)))
+1648890561075	Marionette	INFO	Listening on port 59288
+1648890561545	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=lucas.leroux&date=03-18-2022, line 564: unreachable code after return statement
+1648890566753	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1648890566783	Marionette	INFO	Stopped listening on port 59288
+1648890600410	geckodriver	INFO	Listening on 127.0.0.1:59391
+1648890603561	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilenfBwHf"
+*** You are running in headless mode.
+1648890603839	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilenfBwHf\\search.json.mozlz4", (void 0)))
+1648890604970	Marionette	INFO	Listening on port 59400
+1648890605140	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=lucas.leroux&date=03-18-2022, line 564: unreachable code after return statement
+1648890610486	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1648890610873	Marionette	INFO	Stopped listening on port 59400
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1648890727908	geckodriver	INFO	Listening on 127.0.0.1:59609
+1648890731082	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofileLBXY6C"
+*** You are running in headless mode.
+1648890731340	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofileLBXY6C\\search.json.mozlz4", (void 0)))
+1648890732405	Marionette	INFO	Listening on port 59619
+1648890732652	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=lucas.leroux&date=03-18-2022, line 564: unreachable code after return statement
+1648890737774	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1648890737806	Marionette	INFO	Stopped listening on port 59619
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1648890765670	geckodriver	INFO	Listening on 127.0.0.1:59714
+1648890768740	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofileCEXT1b"
+*** You are running in headless mode.
+1648890769001	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofileCEXT1b\\search.json.mozlz4", (void 0)))
+1648890769881	Marionette	INFO	Listening on port 59725
+1648890770298	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=lucas.leroux&date=03-18-2022, line 564: unreachable code after return statement
+1648890773408	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1648890773848	Marionette	INFO	Stopped listening on port 59725
+JavaScript error: resource://gre/modules/CrashMonitor.jsm, line 201: AbortError: IOUtils: Shutting down and refusing additional I/O tasks
+1648890812341	geckodriver	INFO	Listening on 127.0.0.1:59842
+1648890815402	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilevKcM6k"
+*** You are running in headless mode.
+1648890815653	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilevKcM6k\\search.json.mozlz4", (void 0)))
+1648890816574	Marionette	INFO	Listening on port 59854
+1648890816989	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=lucas.leroux&date=03-18-2022, line 564: unreachable code after return statement
+1648890822213	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1648890822233	Marionette	INFO	Stopped listening on port 59854
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1648890873627	geckodriver	INFO	Listening on 127.0.0.1:54071
+1648890876781	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilebf6LRu"
+*** You are running in headless mode.
+1648890877029	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofilebf6LRu\\search.json.mozlz4", (void 0)))
+1648890878074	Marionette	INFO	Listening on port 54079
+1648890878344	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=lucas.leroux&date=03-18-2022, line 564: unreachable code after return statement
+1648890883357	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1648890883839	Marionette	INFO	Stopped listening on port 54079
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x6B0023,name=PNecko::Msg_RemoveRequestContext) Channel closing: too late to send/recv, messages will be lost
+
+1648890912057	geckodriver	INFO	Listening on 127.0.0.1:54176
+1648890915184	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofileFlQO7f"
+*** You are running in headless mode.
+1648890915427	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofileFlQO7f\\search.json.mozlz4", (void 0)))
+1648890916485	Marionette	INFO	Listening on port 54188
+1648890916742	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=lucas.leroux&date=03-18-2022, line 564: unreachable code after return statement
+1648890923329	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1648890923363	Marionette	INFO	Stopped listening on port 54188
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1648891274546	geckodriver	INFO	Listening on 127.0.0.1:56979
+1648891277666	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofileYSjGrW"
+*** You are running in headless mode.
+1648891277921	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofileYSjGrW\\search.json.mozlz4", (void 0)))
+1648891279014	Marionette	INFO	Listening on port 56987
+1648891279237	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=lucas.leroux&date=03-18-2022, line 564: unreachable code after return statement
+1648891315418	geckodriver	INFO	Listening on 127.0.0.1:57080
+1648891318552	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofileX0xZf8"
+*** You are running in headless mode.
+1648891318792	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\lerou\\AppData\\Local\\Temp\\rust_mozprofileX0xZf8\\search.json.mozlz4", (void 0)))
+1648891319708	Marionette	INFO	Listening on port 57092
+1648891320117	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=lucas.leroux&date=03-18-2022, line 564: unreachable code after return statement
+1648891338158	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1648891338615	Marionette	INFO	Stopped listening on port 57092

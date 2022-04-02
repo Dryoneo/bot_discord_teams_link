@@ -36,7 +36,7 @@ class Scrapper:
             links = browser.find_elements(By.CSS_SELECTOR, "a[href^='https://edtmobiliteng.wigorservices.net']")
             if(len(links)>0):
                 # To get the Principal Link Teams
-                crossLink = links[len(links) - 8]
+                crossLink = links[len(links) - 7]
 
                 # Get parent element to retrieve course name
                 parentElement = crossLink.find_element(By.XPATH, "./../..")
@@ -56,7 +56,9 @@ class Scrapper:
                     # If is not distancing we dont return anything
                     isDistancing = True if self.isDistancingCourse(courseNameElement) else False
                     courseNameElement = courseNameElement.replace("DISTANCIEL", "").replace("&amp;", "&")
+                    print("courseNameElement ", courseNameElement)
                     urlMLB, courseName = self.iAmUrWaiter.getLinkMLB(courseNameElement)
+                    print("courseName ", courseName)
                     if isDistancing is False: return None, urlMLB, courseName, None
                     print("Course : " + courseNameElement)
                     print("We got a new link : " + urlTeams)
@@ -70,12 +72,14 @@ class Scrapper:
 
     ### Take a screenshot of the planning ###
     def takeScreenshot(self, browser, date):
-        nameScreenshot = "/home/ubuntu/bot_discord/" + sys.argv[4] + "/edt_" + date + ".png"
+        nameScreenshot = "./" + sys.argv[4] + "/edt_" + date + ".png"
         browser.save_screenshot(nameScreenshot)
         print("Screenshot " + nameScreenshot + " saved.\n")
+        return nameScreenshot
 
     ### Get the course name ###
     def getCourseName(self, stringElement):
+        print(stringElement.split('<div class="Presence">')[0] + stringElement.split('</div>')[-1])
         return stringElement.split('<div class="Presence">')[0] + stringElement.split('</div>')[-1]
 
     ### Get the course name ###
@@ -84,11 +88,10 @@ class Scrapper:
 
     ### Are we in a school or entreprise period next week ? ###
     def isSchoolPeriodNextWeek(self, browser):
-        next_week = pendulum.now().next(pendulum.MONDAY).strftime('%Y-%m-%d')
+        next_week = pendulum.now().next(pendulum.MONDAY).strftime('%m-%d-%Y')
         self.goToPlanning(browser, next_week)
         isNotSchool = browser.find_elements(By.XPATH, "//*[contains(text(), 'Pas de cours cette semaine')]")
         if(isNotSchool):
-
             self.takeScreenshot(browser, next_week)
             return False, next_week
         return True, None
